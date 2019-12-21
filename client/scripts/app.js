@@ -22,6 +22,8 @@ var App = {
       // examine the response from the server request:
 
       console.log(data);
+      MessagesView.renderAll(data);
+      Rooms.addExistingRooms(data)
       callback();
     });
   },
