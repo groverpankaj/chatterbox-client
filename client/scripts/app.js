@@ -14,17 +14,19 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
+    App.functionStart();
 
   },
 
-  fetch: function(callback = ()=>{fetch}) {
+  fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
 
-      console.log(data);
+      console.log('------');
       MessagesView.renderAll(data);
-      Rooms.addExistingRooms(data)
+      Rooms.addExistingRooms(data);
       callback();
+
     });
   },
 
@@ -36,5 +38,14 @@ var App = {
   stopSpinner: function() {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
+  },
+
+  functionStart: function() {
+    setTimeout(function() {
+      App.fetch(App.stopSpinner);
+      App.functionStart();
+    }, 5000);
   }
 };
+
+

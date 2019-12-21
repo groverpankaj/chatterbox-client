@@ -4,6 +4,8 @@ var FormView = {
 
   initialize: function() {
     FormView.$form.on('submit', FormView.handleSubmit);
+    $('#rooms button').on('click', FormView.handleAddRoom);
+    
   },
 
   handleSubmit: function(event) {
@@ -17,8 +19,13 @@ var FormView = {
     var messageObject = {'roomname': currentRoom, 'username': currentUser, 'text': currentMessage};
 
     Parse.create(messageObject);
-    App.fetch
+    App.fetch(App.stopSpinner);
     $('#message').val('');
+  },
+
+  handleAddRoom: function(event) {
+    event.preventDefault();
+    Rooms.add();
   },
 
   setStatus: function(active) {
