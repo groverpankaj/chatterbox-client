@@ -1,4 +1,6 @@
 var Messages = {
 	
+	messageList: {}
+
 
 };

@@ -6,6 +6,8 @@ var Friends = {
 		var user = userName.trim();
 		if (!Friends.friendList.hasOwnProperty(user)) {
 			Friends.friendList[user] = user;
+		} else {
+			delete Friends.friendList.user;
 		}
 	}
 
