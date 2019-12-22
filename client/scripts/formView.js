@@ -5,7 +5,7 @@ var FormView = {
   initialize: function() {
     FormView.$form.on('submit', FormView.handleSubmit);
     $('#rooms button').on('click', FormView.handleAddRoom);
-    
+
   },
 
   handleSubmit: function(event) {
@@ -18,9 +18,15 @@ var FormView = {
 
     var messageObject = {'roomname': currentRoom, 'username': currentUser, 'text': currentMessage};
 
-    Parse.create(messageObject);
-    App.fetch(App.stopSpinner);
-    $('#message').val('');
+    if (currentRoom === 'All messages') {
+      alert('Select a room to post in');
+    } else {
+      Parse.create(messageObject);
+      App.fetch(App.stopSpinner);
+      $('#message').val('');
+    }
+
+
   },
 
   handleAddRoom: function(event) {

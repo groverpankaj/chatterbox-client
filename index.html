@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <title>chatterbox</title>
     <link rel="stylesheet" href="client/styles/styles.css">
+    <link rel='stylesheet' href='node_modules/bootstrap/dist/css/bootstrap.min.css'>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/underscore/underscore.js"></script>
+    <script src='node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
     <script>
       // DO NOT MODIFY THIS CODE
       if (!/(&|\?)username=/.test(window.location.search)) {
@@ -25,16 +27,23 @@
     <div id="main">
       <h1>chatterbox</h1>
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
-      <div id="rooms">
-        Room:
-        <select id="allRooms"></select>
-        <button>Add Room</button>
+      <div class='row' id="rooms">
+        <span class='col-1 text-left align-middle text-primary' style='padding: 5px 5px 0px 0px; font-size: 1.2em'><strong>Room: </strong></span>
+        <select id="allRooms" class='form-control col-8'>
+          <option value="All messages"><span class='bold'>All messages</span></option>
+        </select>
+        <button type="button" class="btn btn-primary col-2 left-margin">Add Room</button>
       </div>
-      <form action="#" id="send" method="post">
-        <input type="text" name="message" id="message"/>
-        <input type="submit" name="submit" class="submit"/>
+      <form action="#" id="send" method="post" class='row'>
+        <span class='col-1'></span>
+        <input type="text" name="message" id="message" class='col-8 input-group'/>
+        <input type="submit" name="submit" class="submit col-2 btn btn-primary left-margin"/>
       </form>
+      <!-- <div id="chatTabs">
+        <div class='tabs' id='allMessages'>All messages</div>
+      </div> -->
     </div>
+
     <div id="chats"></div>
     <script src="client/env/config.js"></script>
     <script src="client/scripts/parse.js"></script>

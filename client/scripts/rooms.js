@@ -1,10 +1,11 @@
 var Rooms = {
 
-  roomsList: {},
+  roomsList: {'All messages': 'All messages'},
+
 
   add: function() {
     var newRoom = prompt('Please enter a name for your new room');
-    if (newRoom !== null && Rooms.roomsList.hasOwnProperty(newRoom) /* &&  implement XSS protection for this newRoom prompt */) {
+    if (newRoom !== null && !Rooms.roomsList.hasOwnProperty(newRoom) /* &&  implement XSS protection for this newRoom prompt */) {
       Rooms.roomsList[newRoom] = newRoom;
       RoomsView.renderRoom(newRoom);
     } else {
@@ -22,6 +23,10 @@ var Rooms = {
         RoomsView.renderRoom(rm);
       }
     }
+  },
+
+  filter: function() {
+
   }
 
 };

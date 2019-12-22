@@ -6,11 +6,12 @@ body {
 }
 
 #main, #chats {
-    width: 500px;
+    min-width: 500px;
+    width: 75%;
     margin: auto;
     text-align: left;
     background: white;
-    padding: 50px 60px;
+    padding: 50px 60px 10px 60px;
     border: solid #ddd;
     border-width: 0 1px 1px 1px;
 }
@@ -47,13 +48,13 @@ body {
 }
 
 form {
-    padding: 20px;
+    padding: 20px 0px;
     padding-left: 0;
     margin-bottom: 20px;
 }
 
 form input[type=text] {
-    margin-right: 10px;
+    /* margin-right: 10px; */
     width: 70%;
     font-size: 12px;
     padding: 5px;
@@ -88,3 +89,21 @@ form input[type=text] {
     background-color: #0090da;
 }
 
+#chatTabs {
+    display: block;
+    min-height: 100px;
+    width: 100%;
+    border: 1px black solid;
+}
+
+.tabs {
+    border: 1px black solid;
+    display: inline-block;
+    min-width: 100px;
+    padding: 5px;
+    height: 25px;
+}
+
+.left-margin {
+    margin-left: 15px;
+}

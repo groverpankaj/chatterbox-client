@@ -4,6 +4,10 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
+    // RoomsView.renderRoom('All messages');
+    RoomsView.$select.on('change', function() {
+      App.fetch(App.stopSpinner);
+    });
   },
 
 

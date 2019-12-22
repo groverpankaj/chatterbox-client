@@ -9,8 +9,11 @@ var MessagesView = {
   renderAll: function(obj) {
     MessagesView.$chats.empty();
     var m = obj.results;
+    var currentRoom = $('#allRooms').find(':selected').text();
     for (var i = 0; i < m.length; i++) {
-      MessagesView.renderMessage(m[i]);
+      if (currentRoom === m[i].roomname || currentRoom === 'All messages') {
+        MessagesView.renderMessage(m[i]);
+      }
     }
     MessagesView.clickFriends();
   },
@@ -19,10 +22,14 @@ var MessagesView = {
     if (message.username && message.roomname && message.text) {
       var friendBool = Friends.friendList.hasOwnProperty(message.username);
       if (friendBool) {
-        message['friendProperty'] = 'friend';
+        message['friendProperty'] = 'alert-danger';
       } else {
-        message['friendProperty'] = '';
+        message['friendProperty'] = 'alert-success';
       }
+      var d = new Date(message.createdAt);
+      var now = new Date();
+      message['timeAgo'] = Math.floor((now - d)/60000) + ' minutes ago';
+
       var m = MessageView.render(message);
       $('#chats').append(m);
 

@@ -22,7 +22,7 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
 
-      console.log('------');
+      // console.log(data);
       MessagesView.renderAll(data);
       Rooms.addExistingRooms(data);
       callback();
